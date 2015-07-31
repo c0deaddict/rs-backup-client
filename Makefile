@@ -1,5 +1,6 @@
-NAME=codeaddict/rs-backup-client
+NAME=c0deaddict/rs-backup-client
 VERSION=0.1
+REGISTRY=registry.codeaddict.org
 
 .PHONY: all build
 
@@ -12,4 +13,5 @@ latest: build
 	docker tag -f $(NAME):$(VERSION) $(NAME):latest
 
 release: latest
-	docker push $(NAME)
+	docker tag -f $(REGISTRY)/$(NAME):$(VERSION)
+	docker push $(REGISTRY)/$(NAME):$(VERSION)
