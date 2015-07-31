@@ -1,9 +1,10 @@
 USER=c0deaddict
 IMAGE=rs-backup-client
+ARCH=$(shell cat arch)
 VERSION=$(shell cat version)
 REGISTRY=registry.codeaddict.org
 
-NAME=$(USER)/$(IMAGE):$(VERSION)
+NAME=$(USER)/$(IMAGE):$(VERSION)-$(ARCH)
 
 .PHONY: all build release
 
