@@ -1,6 +1,6 @@
 USER=c0deaddict
 IMAGE=rs-backup-client
-VERSION=$(cat version)
+VERSION=$(shell cat version)
 REGISTRY=registry.codeaddict.org
 
 .PHONY: all build release
