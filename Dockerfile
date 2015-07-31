@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM resin/rpi-raspbian
 MAINTAINER Jos van Bakel <josvanbakel@gmail.com>
 
 RUN apt-get update
