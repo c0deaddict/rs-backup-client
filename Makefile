@@ -3,13 +3,15 @@ IMAGE=rs-backup-client
 VERSION=$(shell cat version)
 REGISTRY=registry.codeaddict.org
 
+NAME=$(USER)/$(IMAGE):$(VERSION)
+
 .PHONY: all build release
 
 all: build
 
 build:
-	docker build -t $(USER)/$(IMAGE):$(VERSION) .
+	docker build -t $(NAME) .
 
 release: build
-	docker tag -f $(REGISTRY)/$(USER)/$(IMAGE):$(VERSION)
-	docker push $(REGISTRY)/$(USER)/$(IMAGE):$(VERSION)
+	docker tag -f $(NAME) $(REGISTRY)/$(NAME)
+	docker push $(REGISTRY)/$(NAME)
