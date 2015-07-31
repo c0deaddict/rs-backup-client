@@ -1,17 +1,15 @@
-NAME=c0deaddict/rs-backup-client
-VERSION=0.1
+USER=c0deaddict
+IMAGE=rs-backup-client
+VERSION=$(cat version)
 REGISTRY=registry.codeaddict.org
 
-.PHONY: all build
+.PHONY: all build release
 
 all: build
 
 build:
-	docker build -t $(NAME):$(VERSION) .
+	docker build -t $(USER)/$(IMAGE):$(VERSION) .
 
-latest: build
-	docker tag -f $(NAME):$(VERSION) $(NAME):latest
-
-release: latest
-	docker tag -f $(REGISTRY)/$(NAME):$(VERSION)
-	docker push $(REGISTRY)/$(NAME):$(VERSION)
+release: build
+	docker tag -f $(REGISTRY)/$(USER)/$(IMAGE):$(VERSION)
+	docker push $(REGISTRY)/$(USER)/$(IMAGE):$(VERSION)
